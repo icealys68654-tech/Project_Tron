@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Tron — Disc Core</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: #000;
+        color: #e0f7ff;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      #app {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      h1 {
+        font-size: 2.4rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #00f0ff, #a0ffff, #00f0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+      }
+      .subtitle {
+        color: #7ad7ff;
+        margin-top: 0.4rem;
+        letter-spacing: 0.08em;
+      }
+      .core-container {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0 3rem;
+        position: relative;
+      }
+      .core-img {
+        width: min(420px, 90vw);
+        height: auto;
+        filter: drop-shadow(0 0 40px rgba(0, 220, 255, 0.55));
+        animation: pulse 4s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { filter: drop-shadow(0 0 30px rgba(0, 220, 255, 0.45)); }
+        50% { filter: drop-shadow(0 0 55px rgba(0, 240, 255, 0.75)); }
+      }
+      .panel {
+        background: rgba(0, 30, 50, 0.55);
+        border: 1px solid rgba(0, 200, 255, 0.25);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(8px);
+      }
+      .panel h2 {
+        font-size: 1.1rem;
+        color: #00e5ff;
+        margin-bottom: 1rem;
+        letter-spacing: 0.08em;
+      }
+      .status {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        font-size: 0.95rem;
+      }
+      .status span { color: #7ad7ff; }
+      .status strong { color: #fff; }
+      button {
+        background: linear-gradient(135deg, #00c8ff, #0077aa);
+        border: none;
+        color: #000;
+        font-weight: 600;
+        padding: 0.65rem 1.4rem;
+        border-radius: 6px;
+        cursor: pointer;
+        letter-spacing: 0.05em;
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      pre {
+        background: #001018;
+        border-radius: 8px;
+        padding: 1rem;
+        overflow-x: auto;
+        font-size: 0.85rem;
+        color: #a0e8ff;
+        max-height: 320px;
+      }
+      .actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; }
+      .error { color: #ff6b8a; margin-top: 0.8rem; }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Project Tron</h1>
+        <p class="subtitle">One schema. Every boundary. Disc Core online.</p>
+      </header>
+
+      <div class="core-container">
+        <!-- Disc Core – the crystalline polyhedron you provided -->
+        <img
+          class="core-img"
+          src="/disc-core.jpg"
+          alt="Disc Core – crystalline geometric sphere"
+        />
+      </div>
+
+      <div class="panel">
+        <h2>Systems Status</h2>
+        <div class="status" id="status">
+          <div>API: <span id="api-status">checking…</span></div>
+          <div>Buildings: <strong id="building-count">—</strong></div>
+        </div>
+        <div class="actions">
+          <button id="btn-refresh">Refresh City</button>
+          <button id="btn-sample">Load Sample City</button>
+        </div>
+        <p class="error" id="error" hidden></p>
+      </div>
+
+      <div class="panel">
+        <h2>Validated City Payload</h2>
+        <pre id="city-json">Loading…</pre>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

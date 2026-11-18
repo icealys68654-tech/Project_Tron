@@ -1,0 +1,10 @@
+project-tron/
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── README.md
+└── src/
+    ├── schema.ts      ← single source of truth (BuildingSchema + CitySchema + loadCity)
+    ├── server.ts      ← Zod-validated HTTP API
+    └── main.ts        ← frontend city + Disc Core visualization
